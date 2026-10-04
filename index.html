@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi IPTV</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<video id="video" controls playsinline></video>
+
+<script>
+
+const video = document.getElementById("video");
+
+const url = "AQUI_PONDREMOS_EL_M3U8";
+
+if (Hls.isSupported()) {
+
+    const hls = new Hls();
+
+    hls.loadSource(url);
+    hls.attachMedia(video);
+
+} else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+
+    video.src = url;
+
+}
+
+</script>
+
+</body>
+</html>
